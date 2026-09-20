@@ -1,0 +1,99 @@
+{
+    "id": "case_01",
+    "title": "The Witnesses",
+
+    "victim": {
+        "id": "clara",
+        "name": "Clara Vale",
+        "occupation": "Artist"
+    },
+
+    "opening": "Talented artist Clara Vale is found dead in her studio during her private exhibition. Her devoted assistant Anna is found next to her body with something red on her hands.",
+
+    "suspects": [
+        {
+            "id": "anna",
+            "name": "Anna",
+            "occupation": "Clara's assistant",
+            "description": "Clara's loyal assistant. She was found beside Clara's body with something red covering her hands."
+        },
+        {
+            "id": "elliot",
+            "name": "Elliot Grim",
+            "occupation": "Artist",
+            "description": "An old friend of Clara and a struggling artist. Several guests saw him arguing with Clara earlier that evening."
+        },
+        {
+            "id": "julian",
+            "name": "Julian Mercer",
+            "occupation": "Artist",
+            "description": "A successful artist and one of Clara's closest friends for more than fifteen years. He was seen leaving Clara's studio not long before she was found dead."
+        }
+    ],
+
+    "other_people": [
+        {
+            "id": "gideon",
+            "name": "Gideon Crane",
+            "occupation": "Spiritual therapist",
+            "description": "Clara's eccentric spiritual therapist. He believes Clara had been deeply troubled in the weeks before her death."
+        }
+    ],
+
+"evidence": [
+    {
+        "id": "clara_body",
+        "name": "Clara's Body",
+        "type": "physical",
+        "location": "studio",
+        "description": "Clara Vale lies motionless on the floor of her studio. There is an apparent head injury."
+    },
+    {
+        "id": "red_substance",
+        "name": "Red Substance",
+        "type": "physical",
+        "location": "studio",
+        "description": "A pool of deep red substance lies near Clara's body. The same substance covers Anna's hands.",
+        "discoveries": [
+            "red_substance_is_paint"
+        ]
+    },
+    {
+        "id": "bronze_sculpture",
+        "name": "Bronze Sculpture",
+        "type": "physical",
+        "location": "studio",
+        "description": "A heavy bronze sculpture is found near Clara's body."
+    }
+],
+"clues": [
+    {
+        "id": "red_substance_is_paint",
+        "name": "Crimson Oil Paint",
+        "description": "The red substance beside Clara's body and on Anna's hands is crimson oil paint, not blood."
+    }
+],
+
+"locations": [
+    {
+        "id": "studio",
+        "name": "Clara's Studio",
+        "description": "Clara's private workspace on the upper floor. Her body was discovered here."
+    },
+    {
+        "id": "gallery",
+        "name": "Exhibition Gallery",
+        "description": "The room where Clara's new collection, The Witnesses, is being displayed."
+    },
+    {
+        "id": "dining_room",
+        "name": "Dining Room",
+        "description": "The main dining room where Clara and her guests ate earlier that evening."
+    },
+    {
+        "id": "hallway",
+        "name": "Upstairs Hallway",
+        "description": "A corridor that connects Clara's studio to the rest of the house."
+    }
+]
+}

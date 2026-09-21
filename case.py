@@ -11,6 +11,7 @@ class Case:
         self.other_people = case_data["other_people"]
         self.evidence = case_data["evidence"]
         self.locations = case_data["locations"]
+        self.clues = case_data["clues"]
 
 def load_case(file_path):
     with open(file_path, "r", encoding="utf-8") as file:

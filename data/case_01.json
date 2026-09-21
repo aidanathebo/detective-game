@@ -12,17 +12,90 @@
 
     "suspects": [
         {
-            "id": "anna",
-            "name": "Anna",
-            "occupation": "Clara's assistant",
-            "description": "Clara's loyal assistant. She was found beside Clara's body with something red covering her hands."
+    "id": "anna",
+    "name": "Anna",
+    "occupation": "Clara's assistant",
+    "description": "Clara's loyal assistant. She was found kneeling beside Clara's body with a red substance covering her hands.",
+    "topics": [
+        {
+            "id": "anna_discovery",
+            "question": "What happened when you found Clara?",
+            "answer": "Clara was supposed to be downstairs. When she didn't come, I went to the studio to look for her. I found her lying on the floor. I knelt beside her and checked whether she was breathing. Then I screamed.",
+            "clues": [
+                "anna_found_body"
+            ]
         },
         {
-            "id": "elliot",
-            "name": "Elliot Grim",
-            "occupation": "Artist",
-            "description": "An old friend of Clara and a struggling artist. Several guests saw him arguing with Clara earlier that evening."
+            "id": "anna_red_hands",
+            "question": "How did the red substance get on your hands?",
+            "answer": "It was already on the floor beside Clara. I didn't even notice it at first. I knelt down and touched her while checking whether she was alive. That's how it got on my hands.",
+            "requires_clues": [
+                "red_substance_is_paint"
+            ],
+            "clues": [
+                "anna_touched_red_substance"
+            ]
         },
+        {
+            "id": "anna_clara_plans",
+            "question": "Did Clara say anything unusual tonight?",
+            "answer": "She seemed tense, but determined. At around nine twenty she told me she was going to make an important announcement later that evening.",
+            "clues": [
+                "clara_planned_announcement"
+            ]
+        },
+        {
+            "id": "anna_announcement",
+            "question": "What do you know about the planned announcement?",
+            "answer": "She told me it would happen at ten thirty. She wouldn't tell me exactly what she planned to say. She only said it was important and asked me to make sure everyone was together.",
+            "requires_clues": [
+                "clara_planned_announcement"
+            ],
+            "clues": [
+                "announcement_time"
+            ]
+        }
+    ]
+},
+        {
+    "id": "elliot",
+    "name": "Elliot",
+    "occupation": "Artist",
+    "description": "A longtime friend of Clara and a struggling artist. Several guests witnessed a heated argument between them earlier that evening.",
+    "topics": [
+        {
+            "id": "elliot_argument",
+            "question": "What happened during your argument with Clara?",
+            "answer": "We argued. That's hardly a secret. Clara had a habit of treating struggling artists like failures who simply hadn't worked hard enough. I lost my temper.",
+            "clues": [
+                "elliot_public_threat"
+            ]
+        },
+        {
+            "id": "elliot_after_argument",
+            "question": "Did you speak to Clara again after the argument?",
+            "answer": "No. I stayed downstairs with everyone else. I didn't go near her studio.",
+            "clues": [
+                "elliot_denies_studio_visit"
+            ]
+        },
+        {
+            "id": "elliot_sketchbook_confrontation",
+            "question": "Then why was your sketchbook in Clara's studio?",
+            "answer": "Fine. I went up there. But she was alive when I left. I needed her help. My career is going nowhere, and Clara knows everyone who matters. I asked her to introduce my work to a gallery. I didn't want anyone to know I'd gone crawling to her for help after shouting at her in front of everyone.",
+            "requires_evidence": [
+                "elliot_sketchbook"
+            ],
+            "requires_clues": [
+                "elliot_denies_studio_visit"
+            ],
+            "clues": [
+                "elliot_admits_studio_visit",
+                "elliot_reason_for_visit"
+            ]
+        }
+    ]
+},
         {
             "id": "julian",
             "name": "Julian Mercer",
@@ -46,6 +119,7 @@
         "name": "Clara's Body",
         "type": "physical",
         "location": "studio",
+        "area": "body_area",
         "description": "Clara Vale lies motionless on the floor of her studio. There is an apparent head injury."
     },
     {
@@ -53,6 +127,7 @@
         "name": "Red Substance",
         "type": "physical",
         "location": "studio",
+        "area": "floor_area",
         "description": "A pool of deep red substance lies near Clara's body. The same substance covers Anna's hands.",
         "discoveries": [
             "red_substance_is_paint"
@@ -63,23 +138,102 @@
         "name": "Bronze Sculpture",
         "type": "physical",
         "location": "studio",
+        "area": "floor_area",
         "description": "A heavy bronze sculpture is found near Clara's body."
-    }
+    },
+    {
+    "id": "elliot_sketchbook",
+    "name": "Elliot's Sketchbook",
+    "type": "physical",
+    "location": "studio",
+    "area": "painting_area",
+    "description": "A worn sketchbook is partially hidden among Clara's painting supplies. The name 'Elliot' is written inside the cover.",
+    "discoveries": [
+        "elliot_angry_drawing"
+    ]
+}
 ],
 "clues": [
     {
         "id": "red_substance_is_paint",
         "name": "Crimson Oil Paint",
         "description": "The red substance beside Clara's body and on Anna's hands is crimson oil paint, not blood."
-    }
+    }, 
+    {
+    "id": "anna_found_body",
+    "name": "Anna Discovered Clara",
+    "description": "Anna says she went to the studio when Clara failed to return downstairs and found Clara lying on the floor."
+},
+{
+    "id": "anna_touched_red_substance",
+    "name": "Anna's Red Hands",
+    "description": "Anna says the red substance got onto her hands when she knelt beside Clara and checked whether she was alive."
+},
+{
+    "id": "clara_planned_announcement",
+    "name": "Clara's Planned Announcement",
+    "description": "Clara told Anna that she intended to make an important announcement later that evening."
+},
+{
+    "id": "announcement_time",
+    "name": "22:30 Announcement",
+    "description": "Clara's planned announcement was supposed to take place at 22:30."
+}, 
+{
+    "id": "elliot_angry_drawing",
+    "name": "Disturbing Drawing of Clara",
+    "description": "One page of Elliot's sketchbook contains an angry drawing of Clara with her face heavily crossed out."
+}, 
+{
+    "id": "elliot_public_threat",
+    "name": "Elliot's Public Threat",
+    "description": "Several guests heard Elliot tell Clara, 'You won't be laughing at me after tonight,' during their argument."
+},
+{
+    "id": "elliot_denies_studio_visit",
+    "name": "Elliot Denies Visiting the Studio",
+    "description": "Elliot claims he did not privately visit Clara in her studio after their public argument."
+},
+{
+    "id": "elliot_admits_studio_visit",
+    "name": "Elliot Admits Visiting the Studio",
+    "description": "After being confronted about his sketchbook, Elliot admits that he secretly visited Clara in her studio from approximately 21:42 to 21:51."
+},
+{
+    "id": "elliot_reason_for_visit",
+    "name": "Elliot Asked Clara for Help",
+    "description": "Elliot says he privately asked Clara to use her influence to help his struggling career. He lied about the visit because he was embarrassed and feared it would make him look guilty."
+}
 ],
 
 "locations": [
     {
-        "id": "studio",
-        "name": "Clara's Studio",
-        "description": "Clara's private workspace on the upper floor. Her body was discovered here."
-    },
+    "id": "studio",
+    "name": "Clara's Studio",
+    "description": "Clara's private workspace on the upper floor. Her body was discovered here.",
+    "areas": [
+        {
+            "id": "body_area",
+            "name": "Clara's Body",
+            "description": "Clara lies motionless on the studio floor."
+        },
+        {
+            "id": "floor_area",
+            "name": "Floor Around the Body",
+            "description": "The area immediately surrounding Clara's body."
+        },
+        {
+            "id": "desk_area",
+            "name": "Clara's Desk",
+            "description": "A large wooden desk covered with papers, letters and art materials."
+        },
+        {
+            "id": "painting_area",
+            "name": "Painting Area",
+            "description": "Paints, brushes, unfinished canvases and other supplies fill this side of the studio."
+        }
+    ]
+},
     {
         "id": "gallery",
         "name": "Exhibition Gallery",

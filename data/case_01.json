@@ -115,13 +115,23 @@
 
 "evidence": [
     {
-        "id": "clara_body",
-        "name": "Clara's Body",
-        "type": "physical",
-        "location": "studio",
-        "area": "body_area",
-        "description": "Clara Vale lies motionless on the floor of her studio. There is an apparent head injury."
-    },
+    "id": "clara_body",
+    "name": "Clara's Body",
+    "type": "physical",
+    "location": "studio",
+    "area": "body_area",
+    "description": "Clara Vale lies motionless on the floor of her studio. There is an apparent head injury.",
+    "analysis": [
+        {
+            "id": "body_injury_analysis",
+            "name": "Examine Head Injury",
+            "requires_clues": [],
+            "clues": [
+                "clara_blunt_force_injury"
+            ]
+        }
+    ]
+}, 
     {
         "id": "red_substance",
         "name": "Red Substance",
@@ -134,13 +144,35 @@
         ]
     },
     {
-        "id": "bronze_sculpture",
-        "name": "Bronze Sculpture",
-        "type": "physical",
-        "location": "studio",
-        "area": "floor_area",
-        "description": "A heavy bronze sculpture is found near Clara's body."
-    },
+    "id": "bronze_sculpture",
+    "name": "Bronze Sculpture",
+    "type": "physical",
+    "location": "studio",
+    "area": "floor_area",
+    "description": "A heavy bronze sculpture is found near Clara's body.",
+    "analysis": [
+        {
+            "id": "sculpture_weapon_analysis",
+            "name": "Compare Sculpture with Clara's Injury",
+            "requires_clues": [
+                "clara_blunt_force_injury"
+            ],
+            "clues": [
+                "sculpture_murder_weapon"
+            ]
+        },
+        {
+            "id": "sculpture_fingerprint_analysis",
+            "name": "Check Sculpture for Fingerprints",
+            "requires_clues": [
+                "sculpture_murder_weapon"
+            ],
+            "clues": [
+                "elliot_fingerprints_on_weapon"
+            ]
+        }
+    ]
+}, 
     {
     "id": "elliot_sketchbook",
     "name": "Elliot's Sketchbook",
@@ -203,6 +235,22 @@
     "id": "elliot_reason_for_visit",
     "name": "Elliot Asked Clara for Help",
     "description": "Elliot says he privately asked Clara to use her influence to help his struggling career. He lied about the visit because he was embarrassed and feared it would make him look guilty."
+}, 
+
+{
+    "id": "clara_blunt_force_injury",
+    "name": "Clara's Fatal Injury",
+    "description": "Examination of Clara's body indicates that she died from a severe blunt-force injury to the head."
+},
+{
+    "id": "sculpture_murder_weapon",
+    "name": "Probable Murder Weapon",
+    "description": "The bronze sculpture's shape and weight are consistent with Clara's fatal head injury. It is likely the murder weapon."
+},
+{
+    "id": "elliot_fingerprints_on_weapon",
+    "name": "Elliot's Fingerprints",
+    "description": "Elliot's fingerprints were recovered from the bronze sculpture believed to have killed Clara."
 }
 ],
 

@@ -21,6 +21,68 @@ def display_suspects(case):
         print(suspect["occupation"])
         print(suspect["description"])
 
+
+def analyze_evidence(evidence, investigation):
+    analyses = evidence.get("analysis", [])
+
+    if not analyses:
+        return
+
+    while True:
+        available_analyses = []
+
+        for analysis in analyses:
+            if not investigation.analysis_is_available(analysis):
+                continue
+
+            # Hide analyses that have already been completed
+            clue_ids = analysis.get("clues", [])
+
+            if all(investigation.has_clue(clue_id) for clue_id in clue_ids):
+                continue
+
+            available_analyses.append(analysis)
+
+        if not available_analyses:
+            print("\nNo further analysis is available.")
+            return
+
+        print("\nAVAILABLE ANALYSIS")
+        print("-" * 50)
+
+        for index, analysis in enumerate(available_analyses, start=1):
+            print(f"{index}. {analysis['name']}")
+
+        print(f"{len(available_analyses) + 1}. Return")
+
+        choice = input("\nWhat would you like to do?\n> ")
+
+        if not choice.isdigit():
+            print("\nPlease enter a number.")
+            continue
+
+        choice = int(choice)
+
+        if choice == len(available_analyses) + 1:
+            return
+
+        if choice < 1 or choice > len(available_analyses):
+            print("\nInvalid choice.")
+            continue
+
+        analysis = available_analyses[choice - 1]
+
+        new_clues = investigation.analyze_evidence(
+            evidence["id"], analysis
+        )
+
+        if new_clues:
+            print("\nNEW INFORMATION")
+
+            for clue in new_clues:
+                print(f"\n- {clue['name']}")
+                print(f"  {clue['description']}")
+
 def display_evidence(investigation):
     while True:
         print("\nEVIDENCE")
@@ -78,9 +140,13 @@ def display_evidence(investigation):
                 print(f"\n- {clue['name']}")
                 print(f"  {clue['description']}")
 
-        else:
+        if evidence.get("analysis"):
+            analyze_evidence(evidence, investigation)
+
+        elif not new_clues:
             print("\nYou learn nothing new.")
 
+            
 def display_case_notes(investigation):
     print("\nCASE NOTES")
     print("-" * 50)

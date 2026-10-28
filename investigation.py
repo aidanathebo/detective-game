@@ -85,3 +85,34 @@ class Investigation:
                 return False
 
         return True
+
+
+    def analysis_is_available(self, analysis):
+        required_clues = analysis.get("requires_clues", [])
+
+        for clue_id in required_clues:
+            if not self.has_clue(clue_id):
+                return False
+
+        return True
+
+
+    def analyze_evidence(self, evidence_id, analysis):
+        if not self.has_evidence(evidence_id):
+            return []
+
+        if not self.analysis_is_available(analysis):
+            return []
+
+        new_clues = []
+
+        for clue_id in analysis.get("clues", []):
+            clue = self.discover_clue(clue_id)
+
+            if clue:
+                new_clues.append(clue)
+
+        return new_clues
+
+
+    

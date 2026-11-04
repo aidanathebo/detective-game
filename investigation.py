@@ -21,6 +21,7 @@ class Investigation:
             if (
                 evidence["location"] == location_id
                 and evidence.get("area") == area_id
+                and self.evidence_is_available(evidence)
             ):
                 if evidence not in self.discovered_evidence:
                     self.discovered_evidence.append(evidence)
@@ -113,6 +114,15 @@ class Investigation:
                 new_clues.append(clue)
 
         return new_clues
+
+    def evidence_is_available(self, evidence):
+        required_clues = evidence.get("requires_clues", [])
+
+        for clue_id in required_clues:
+            if not self.has_clue(clue_id):
+                return False
+
+        return True
 
 
     

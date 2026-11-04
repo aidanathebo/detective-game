@@ -54,7 +54,18 @@
             "clues": [
                 "announcement_time"
             ]
-        }
+        }, 
+        {
+    "id": "anna_expected_guest",
+    "question": "Was Clara expecting anyone else that evening?",
+    "answer": "She mentioned that she was waiting for one more person. She said, 'If she comes, everything might finally make sense.' But she wouldn't tell me who it was.",
+    "requires_clues": [
+        "clara_planned_announcement"
+    ],
+    "clues": [
+        "clara_expected_guest"
+    ]
+}
     ]
 },
         {
@@ -93,7 +104,42 @@
                 "elliot_admits_studio_visit",
                 "elliot_reason_for_visit"
             ]
-        }
+        }, 
+        {
+    "id": "elliot_clothing",
+    "question": "What's that red stain on your sleeve?",
+    "answer": "Paint. What else would it be? I was in Clara's studio earlier, remember? She was working on a painting while we talked. I must have brushed against something.",
+    "requires_clues": [
+        "elliot_admits_studio_visit"
+    ],
+    "clues": [
+        "elliot_paint_on_clothing"
+    ]
+},
+{
+    "id": "elliot_paint_confrontation",
+    "question": "The paint on your sleeve looks like the paint beside Clara's body. How do you explain that?",
+    "answer": "Because Clara was using that paint when I visited her! I was standing right beside her workspace. I don't remember exactly what I touched. I left her studio before ten. She was alive when I walked out.",
+    "requires_clues": [
+        "elliot_paint_on_clothing",
+        "red_substance_is_paint"
+    ],
+    "clues": [
+        "elliot_paint_matches_scene"
+    ]
+},
+{
+    "id": "elliot_fingerprint_confrontation",
+    "question": "Your fingerprints were found on the bronze sculpture. Why did you touch it?",
+    "answer": "I picked it up while we were talking. I was nervous, and I needed something to do with my hands. Clara told me to put it down, so I did. I didn't hit her with it! She was alive when I left.",
+    "requires_clues": [
+        "elliot_fingerprints_on_weapon",
+        "elliot_admits_studio_visit"
+    ],
+    "clues": [
+        "elliot_handled_sculpture"
+    ]
+}
     ]
 },
         {
@@ -110,7 +156,36 @@
             "name": "Gideon Crane",
             "occupation": "Spiritual therapist",
             "description": "Clara's eccentric spiritual therapist. He believes Clara had been deeply troubled in the weeks before her death."
+        }, 
+        {
+            "id": "daniel",
+            "name": "Daniel",
+            "occupation": "Exhibition guest",
+            "description": "A guest who was attending Clara's exhibition and spent part of the evening near the garden.",
+            "topics": [
+            {
+            "id": "daniel_garden_sighting",
+            "question": "Did you notice anything unusual near the garden?",
+            "answer": "Around ten, I noticed a woman near the garden entrance. I didn't recognize her, but I only saw her briefly.",
+            "clues": [
+                "unknown_woman_garden"
+            ]
+        },
+        {
+            "id": "daniel_mara_identification",
+            "question": "Could the woman you saw have been Mara?",
+            "answer": "Possibly. Now that I've seen that old photograph, she looks a little familiar. But it was dark, and I couldn't see her face clearly.",
+            "requires_clues": [
+                "mara_identity",
+                "unknown_woman_garden"
+            ],
+            "clues": [
+                "woman_resembles_mara"
+            ]
         }
+    ]
+}
+
     ],
 
 "evidence": [
@@ -183,6 +258,58 @@
     "discoveries": [
         "elliot_angry_drawing"
     ]
+}, 
+{
+    "id": "old_group_photo",
+    "name": "Old Group Photograph",
+    "type": "document",
+    "location": "studio",
+    "area": "desk_area",
+    "description": "An old photograph shows a much younger Clara standing with Julian, Elliot and an unfamiliar young woman. The four appear to be close friends.",
+    "discoveries": [
+        "unknown_fourth_artist"
+    ]
+}, 
+{
+    "id": "old_plagiarism_article",
+    "name": "Old Plagiarism Article",
+    "type": "document",
+    "location": "gallery",
+    "area": "archive_display",
+    "description": "An archived newspaper article from fifteen years ago discusses a plagiarism scandal involving the artist Mara. The article includes a photograph identifying Mara as the fourth member of Clara's old artistic circle.",
+    "requires_clues": [
+        "unknown_fourth_artist"
+    ],
+    "discoveries": [
+        "mara_identity",
+        "mara_plagiarism_scandal"
+    ]
+}, 
+{
+    "id": "mara_messages",
+    "name": "Clara and Mara's Messages",
+    "type": "document",
+    "location": "studio",
+    "area": "desk_area",
+    "requires_clues": [
+        "mara_identity"
+    ],
+    "description": "A printed exchange of recent messages between Clara and Mara. Mara writes, 'You had fifteen years to listen to me,' and 'If I come tonight, it won't be to forgive you.'",
+    "discoveries": [
+        "mara_angry_messages",
+        "mara_expected_at_party"
+    ]
+}, 
+{
+    "id": "unlocked_back_door",
+    "name": "Unlocked Back Entrance",
+    "type": "physical",
+    "location": "garden",
+    "area": "back_entrance",
+    "description": "The back door is unlocked. Someone could have entered the house through the garden without passing the main entrance.",
+    "discoveries": [
+        "back_entrance_access"
+    ]
 }
 ],
 "clues": [
@@ -251,6 +378,66 @@
     "id": "elliot_fingerprints_on_weapon",
     "name": "Elliot's Fingerprints",
     "description": "Elliot's fingerprints were recovered from the bronze sculpture believed to have killed Clara."
+}, 
+{
+    "id": "elliot_paint_on_clothing",
+    "name": "Paint on Elliot's Clothing",
+    "description": "A visible stain of deep crimson paint is present on Elliot's sleeve."
+},
+{
+    "id": "elliot_paint_matches_scene",
+    "name": "Similar Crimson Paint",
+    "description": "The paint on Elliot's sleeve looks very similar to the crimson oil paint found beside Clara's body. A visual comparison alone does not establish that it came from the same source."
+},
+{
+    "id": "elliot_handled_sculpture",
+    "name": "Elliot's Explanation for His Fingerprints",
+    "description": "Elliot says he handled the bronze sculpture during his earlier visit to Clara's studio, while Clara was still alive."
+}, 
+{
+    "id": "unknown_fourth_artist",
+    "name": "The Fourth Artist",
+    "description": "An old photograph shows Clara, Julian, Elliot and an unidentified young woman together approximately fifteen years ago."
+}, 
+{
+    "id": "mara_identity",
+    "name": "Mara — The Fourth Artist",
+    "description": "The unidentified woman in the old group photograph is Mara, an artist who belonged to the same circle as Clara, Julian and Elliot fifteen years ago."
+},
+{
+    "id": "mara_plagiarism_scandal",
+    "name": "The Plagiarism Scandal",
+    "description": "Fifteen years ago, Mara was publicly accused of plagiarizing Julian's artwork. Clara defended Julian, and Mara's artistic career collapsed following the scandal."
+}, 
+{
+    "id": "mara_angry_messages",
+    "name": "Mara's Anger",
+    "description": "In recent messages, Mara expresses deep resentment toward Clara for defending Julian fifteen years earlier."
+},
+{
+    "id": "mara_expected_at_party",
+    "name": "Mara Might Attend",
+    "description": "Mara's messages suggest that she was considering attending Clara's exhibition that evening."
+}, 
+{
+    "id": "unknown_woman_garden",
+    "name": "Unknown Woman Near the Garden",
+    "description": "Daniel reports seeing an unfamiliar woman near the garden entrance at approximately 22:00."
+},
+{
+    "id": "woman_resembles_mara",
+    "name": "Possible Mara Sighting",
+    "description": "After seeing Mara in an old photograph, Daniel thinks the woman near the garden may have resembled her, although he is uncertain."
+}, 
+{
+    "id": "back_entrance_access",
+    "name": "Possible Secret Entrance",
+    "description": "The back entrance was found unlocked, providing a possible route into the house without being seen by guests at the front entrance. There is no proof that anyone used it."
+}, 
+{
+    "id": "clara_expected_guest",
+    "name": "Clara Expected Another Guest",
+    "description": "Anna says Clara was expecting one more person to attend the exhibition, although she did not reveal the person's identity."
 }
 ],
 
@@ -283,10 +470,22 @@
     ]
 },
     {
-        "id": "gallery",
-        "name": "Exhibition Gallery",
-        "description": "The room where Clara's new collection, The Witnesses, is being displayed."
-    },
+    "id": "gallery",
+    "name": "Exhibition Gallery",
+    "description": "The room where Clara's new collection, The Witnesses, is being displayed. Alongside the paintings is a small retrospective of her earlier artistic career.",
+    "areas": [
+        {
+            "id": "paintings_display",
+            "name": "The Witnesses Collection",
+            "description": "Clara's latest paintings fill the gallery. Strange figures, obscured faces and fragmented identities appear throughout the collection."
+        },
+        {
+            "id": "archive_display",
+            "name": "Archive Display",
+            "description": "An assortment of old photographs, newspaper clippings and exhibition catalogues documents Clara's early career."
+        }
+    ]
+},
     {
         "id": "dining_room",
         "name": "Dining Room",
@@ -296,6 +495,23 @@
         "id": "hallway",
         "name": "Upstairs Hallway",
         "description": "A corridor that connects Clara's studio to the rest of the house."
-    }
+    }, 
+    {
+    "id": "garden",
+    "name": "Back Garden",
+    "description": "A quiet garden behind Clara's house. A narrow path leads to the back entrance.",
+    "areas": [
+        {
+            "id": "back_entrance",
+            "name": "Back Entrance",
+            "description": "A side door connects the garden to the house. It is away from the main entrance where guests arrived."
+        },
+        {
+            "id": "garden_path",
+            "name": "Garden Path",
+            "description": "A narrow stone path runs alongside the house."
+        }
+    ]
+}
 ]
 }
